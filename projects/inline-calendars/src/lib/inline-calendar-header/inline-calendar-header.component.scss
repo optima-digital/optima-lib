@@ -1,17 +1,19 @@
-.example-header {
+.inline-calendar__header {
   display: flex;
   align-items: center;
   padding: 0.5em;
   height: 40px;
 }
 
-.example-header-label {
+.inline-calendar__label {
   flex: 1;
   height: 1em;
   font-weight: 500;
   text-align: center;
 }
 
-.example-double-arrow .mat-icon {
-  margin: -22%;
+.inline-calendar__next--top {
+  position: absolute!important;
+  top: 158px;
+  right: 20px;
 }

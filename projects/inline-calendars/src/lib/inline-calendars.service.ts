@@ -7,4 +7,5 @@ import { Subject } from 'rxjs';
 export class InlineCalendarsService {
   public nextMonthChanged$ = new Subject();
   public prevMonthChanged$ = new Subject();
+  public isDisabled = false;
 }

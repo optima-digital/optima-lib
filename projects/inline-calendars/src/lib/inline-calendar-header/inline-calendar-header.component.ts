@@ -1,11 +1,9 @@
-import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
   Inject,
-  Input,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -26,8 +24,9 @@ import { InlineCalendarsService } from '../inline-calendars.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
-
-  public dataset: {id: number, first: boolean, last: boolean};
+  public disabled = false;
+  public dataset: { id: number; first: boolean; last: boolean };
+  public nextArrowTop = false;
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -36,60 +35,78 @@ export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
     @Inject(MAT_DATE_FORMATS) private dateFormats: MatDateFormats,
     cdr: ChangeDetectorRef,
     private element: ElementRef,
-    private icService: InlineCalendarsService,
+    private inlineCalendarsService: InlineCalendarsService
   ) {
     calendar.stateChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => cdr.markForCheck());
   }
 
-  ngOnInit() {
-
+  public ngOnInit(): void {
+    this.disabled = this.inlineCalendarsService.isDisabled;
     this.parseDataSet();
 
-    this.icService.nextMonthChanged$.pipe(takeUntil(this.destroy$)).subscribe((d) => {
-      if (!this.dataset.last) {
-        this.calendar.activeDate = this.dateAdapter.addCalendarMonths(this.calendar.activeDate, 1)
-      }
-    });
+    if (!this.disabled) {
+      this.onNextMonth();
+      this.onPrevMonth();
+    }
 
-    this.icService.prevMonthChanged$.pipe(takeUntil(this.destroy$)).subscribe((d) => {
-      if (!this.dataset.first) {
-        this.calendar.activeDate = this.dateAdapter.addCalendarMonths(this.calendar.activeDate, -1)
-      }
-    });
+    this.nextArrowTop = this.dataset.last && screen.availWidth < 768;
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
 
-  get periodLabel() {
+  public onNextMonth(): void {
+    this.inlineCalendarsService.nextMonthChanged$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((d) => {
+        if (!this.dataset.last) {
+          this.calendar.activeDate = this.dateAdapter.addCalendarMonths(
+            this.calendar.activeDate,
+            1
+          );
+        }
+      });
+  }
+
+  public onPrevMonth(): void {
+    this.inlineCalendarsService.prevMonthChanged$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((d) => {
+        if (!this.dataset.first) {
+          this.calendar.activeDate = this.dateAdapter.addCalendarMonths(
+            this.calendar.activeDate,
+            -1
+          );
+        }
+      });
+  }
+
+  get periodLabel(): string {
     return this.dateAdapter
-      .format(
-        this.calendar.activeDate,
-        this.dateFormats.display.monthYearLabel
-      )
+      .format(this.calendar.activeDate, this.dateFormats.display.monthYearLabel)
       .toLocaleUpperCase();
   }
 
-  previousClicked(mode: 'month' | 'year') {
+  public previousClicked(mode: 'month' | 'year'): void {
     this.calendar.activeDate =
       mode === 'month'
         ? this.dateAdapter.addCalendarMonths(this.calendar.activeDate, -1)
         : this.dateAdapter.addCalendarYears(this.calendar.activeDate, -1);
 
-    this.icService.prevMonthChanged$.next(this.calendar.activeDate);
+    this.inlineCalendarsService.prevMonthChanged$.next(this.calendar.activeDate);
   }
 
-  nextClicked(mode: 'month' | 'year') {
+  public nextClicked(mode: 'month' | 'year'): void {
     this.calendar.activeDate =
       mode === 'month'
         ? this.dateAdapter.addCalendarMonths(this.calendar.activeDate, 1)
         : this.dateAdapter.addCalendarYears(this.calendar.activeDate, 1);
 
-    this.icService.nextMonthChanged$.next(this.calendar.activeDate);
+    this.inlineCalendarsService.nextMonthChanged$.next(this.calendar.activeDate);
   }
 
   private parseDataSet(): void {
@@ -97,7 +114,7 @@ export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
     this.dataset = {
       id: +ds.idx,
       first: ds.first === 'true',
-      last: ds.last === 'true'
+      last: ds.last === 'true',
     };
   }
 }
