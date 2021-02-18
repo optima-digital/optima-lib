@@ -1,24 +1,27 @@
-# InlineCalendars
+# Angular Material multiple inline calendars
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.9.
+This package will help you display and maname multiple inline calendars, based on Angular Material Datepicker.
 
-## Code scaffolding
+## Install
 
-Run `ng generate component component-name --project inline-calendars` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project inline-calendars`.
-> Note: Don't forget to add `--project inline-calendars` or else it will be added to the default project in your `angular.json` file. 
+```
+npm install @optima-digital/inline-calendars
+```
 
-## Build
+## Usage
 
-Run `ng build inline-calendars` to build the project. The build artifacts will be stored in the `dist/` directory.
+Import the module to your `app.module.ts`
+```
+import { OptimaInlineCalendarsModule } from '@optima-digital';
+```
 
-## Publishing
+Add the inline calendar components to your view:
 
-After building your library with `ng build inline-calendars`, go to the dist folder `cd dist/inline-calendars` and run `npm publish`.
+```
+<optima-inline-calendars></optima-inline-calendars>
+```
 
-## Running unit tests
+The following inputs are available at the moment:
 
-Run `ng test inline-calendars` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* **__totalCalendars__** - number of calendars to be displayed. Default is 3.
+* **__startAt__** - The date to be considered as start date. This will be the date on which the calendar in the middle position will be set. Defaults to todays date.

@@ -1,0 +1,16 @@
+.inline-calendars {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 60%;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.mat-calendar {
+  width: 30%;
+}

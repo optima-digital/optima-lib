@@ -1,0 +1,9 @@
+<div class="example-header">
+  <button type="button" mat-icon-button (click)="previousClicked('month')" *ngIf="dataset.first">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+  <span class="example-header-label">{{periodLabel}}</span>
+  <button type="button" mat-icon-button (click)="nextClicked('month')" *ngIf="dataset.last">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</div>
