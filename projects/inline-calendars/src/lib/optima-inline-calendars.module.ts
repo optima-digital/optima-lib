@@ -4,11 +4,11 @@ import { OptimaInlineCalendarsComponent } from './optima-inline-calendars.compon
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
-import { InlineCalendarHeaderComponent } from './inline-calendar-header/inline-calendar-header.component';
+import { OptimaInlineCalendarHeaderComponent } from './optima-inline-calendar-header/optima-inline-calendar-header.component';
 
 
 @NgModule({
-  declarations: [OptimaInlineCalendarsComponent, InlineCalendarHeaderComponent],
+  declarations: [OptimaInlineCalendarsComponent, OptimaInlineCalendarHeaderComponent],
   imports: [
     CommonModule,
     MatButtonModule,
