@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class InlineCalendarsService {
+export class OptimaInlineCalendarsService {
   public nextMonthChanged$ = new Subject();
   public prevMonthChanged$ = new Subject();
   public isDisabled = false;

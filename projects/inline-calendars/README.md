@@ -15,7 +15,7 @@ npm install @optima-digital/inline-calendars
 
 Import the module to your `app.module.ts`
 ```
-import { OptimaInlineCalendarsModule } from '@optima-digital';
+import { OptimaInlineCalendarsModule } from '@optima-digital/inline-calendars';
 ```
 
 Add the inline calendar components to your view:

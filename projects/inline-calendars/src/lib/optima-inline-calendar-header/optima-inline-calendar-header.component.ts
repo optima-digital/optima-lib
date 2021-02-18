@@ -15,15 +15,15 @@ import {
 import { MatCalendar } from '@angular/material/datepicker';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { InlineCalendarsService } from '../inline-calendars.service';
+import { OptimaInlineCalendarsService } from '../optima-inline-calendars.service';
 
 @Component({
   selector: 'optima-inline-calendar-header',
-  templateUrl: './inline-calendar-header.component.html',
-  styleUrls: ['./inline-calendar-header.component.scss'],
+  templateUrl: './optima-inline-calendar-header.component.html',
+  styleUrls: ['./optima-inline-calendar-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
+export class OptimaInlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
   public disabled = false;
   public dataset: { id: number; first: boolean; last: boolean };
   public nextArrowTop = false;
@@ -35,7 +35,7 @@ export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
     @Inject(MAT_DATE_FORMATS) private dateFormats: MatDateFormats,
     cdr: ChangeDetectorRef,
     private element: ElementRef,
-    private inlineCalendarsService: InlineCalendarsService
+    private oicService: OptimaInlineCalendarsService
   ) {
     calendar.stateChanges
       .pipe(takeUntil(this.destroy$))
@@ -43,7 +43,7 @@ export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.disabled = this.inlineCalendarsService.isDisabled;
+    this.disabled = this.oicService.isDisabled;
     this.parseDataSet();
 
     if (!this.disabled) {
@@ -60,7 +60,7 @@ export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
   }
 
   public onNextMonth(): void {
-    this.inlineCalendarsService.nextMonthChanged$
+    this.oicService.nextMonthChanged$
       .pipe(takeUntil(this.destroy$))
       .subscribe((d) => {
         if (!this.dataset.last) {
@@ -73,7 +73,7 @@ export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
   }
 
   public onPrevMonth(): void {
-    this.inlineCalendarsService.prevMonthChanged$
+    this.oicService.prevMonthChanged$
       .pipe(takeUntil(this.destroy$))
       .subscribe((d) => {
         if (!this.dataset.first) {
@@ -97,7 +97,7 @@ export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
         ? this.dateAdapter.addCalendarMonths(this.calendar.activeDate, -1)
         : this.dateAdapter.addCalendarYears(this.calendar.activeDate, -1);
 
-    this.inlineCalendarsService.prevMonthChanged$.next(this.calendar.activeDate);
+    this.oicService.prevMonthChanged$.next(this.calendar.activeDate);
   }
 
   public nextClicked(mode: 'month' | 'year'): void {
@@ -106,7 +106,7 @@ export class InlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
         ? this.dateAdapter.addCalendarMonths(this.calendar.activeDate, 1)
         : this.dateAdapter.addCalendarYears(this.calendar.activeDate, 1);
 
-    this.inlineCalendarsService.nextMonthChanged$.next(this.calendar.activeDate);
+    this.oicService.nextMonthChanged$.next(this.calendar.activeDate);
   }
 
   private parseDataSet(): void {

@@ -10,24 +10,24 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatCalendar } from '@angular/material/datepicker';
 import * as moment_ from 'moment';
 import { Moment } from 'moment';
-import { InlineCalendarHeaderComponent } from './inline-calendar-header/inline-calendar-header.component';
-import { InlineCalendarsService } from './inline-calendars.service';
+import { OptimaInlineCalendarHeaderComponent } from './optima-inline-calendar-header/optima-inline-calendar-header.component';
+import { OptimaInlineCalendarsService } from './optima-inline-calendars.service';
 
 const moment = moment_;
 
 @Component({
   selector: 'optima-inline-calendars',
-  templateUrl: './inline-calendars.component.html',
-  styleUrls: ['./inline-calendars.component.scss'],
+  templateUrl: './optima-inline-calendars.component.html',
+  styleUrls: ['./optima-inline-calendars.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InlineCalendarsComponent),
+      useExisting: forwardRef(() => OptimaInlineCalendarsComponent),
       multi: true,
     },
   ],
 })
-export class InlineCalendarsComponent implements OnInit, ControlValueAccessor {
+export class OptimaInlineCalendarsComponent implements OnInit, ControlValueAccessor {
   @Input() public startAt: Date | null;
   @Input() public totalCalendars = 3;
   @ViewChildren(MatCalendar) calendars: QueryList<MatCalendar<Moment>>;
@@ -39,7 +39,7 @@ export class InlineCalendarsComponent implements OnInit, ControlValueAccessor {
   public onChange: any = () => {};
   public onTouched: any = () => {};
 
-  constructor(private inlineCalendarsService: InlineCalendarsService) {}
+  constructor(private oicService: OptimaInlineCalendarsService) {}
 
   public ngOnInit(): void {
     if (!this.startAt) {
@@ -50,7 +50,7 @@ export class InlineCalendarsComponent implements OnInit, ControlValueAccessor {
       return;
     }
 
-    this.customHeader = InlineCalendarHeaderComponent;
+    this.customHeader = OptimaInlineCalendarHeaderComponent;
     this.setupCalendars();
   }
 
@@ -94,7 +94,7 @@ export class InlineCalendarsComponent implements OnInit, ControlValueAccessor {
 
   public setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
-    this.inlineCalendarsService.isDisabled = isDisabled;
+    this.oicService.isDisabled = isDisabled;
   }
 
   public highlightSelectedDates = (
@@ -111,7 +111,6 @@ export class InlineCalendarsComponent implements OnInit, ControlValueAccessor {
 
     const formattedDate = date.format('YYYY-MM-DD');
     if (this.value.indexOf(formattedDate) !== -1) {
-      console.log(this.value, formattedDate);
       return 'inline-calendar__date--selected';
     }
 
