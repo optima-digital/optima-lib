@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "inline-calendars": {
+      "projectType": "library",
+      "root": "projects/inline-calendars",
+      "sourceRoot": "projects/inline-calendars/src",
+      "prefix": "optima",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/inline-calendars/tsconfig.lib.json",
+            "project": "projects/inline-calendars/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/inline-calendars/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/inline-calendars/src/test.ts",
+            "tsConfig": "projects/inline-calendars/tsconfig.spec.json",
+            "karmaConfig": "projects/inline-calendars/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/inline-calendars/tsconfig.lib.json",
+              "projects/inline-calendars/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "inline-calendars"
 }
