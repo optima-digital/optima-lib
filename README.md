@@ -4,4 +4,4 @@ Here you will find various Angular libraries, created by developers at Optima Di
 
 Available libraries:
 
-1. [Angular Material multiple inline calendars](./projects/inline-calendars/README.md)
+1. [Angular Material multiple inline calendars](./projects/inline-calendars)
