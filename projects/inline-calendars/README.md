@@ -1,6 +1,11 @@
 # Angular Material multiple inline calendars
 
-This package will help you display and maname multiple inline calendars, based on Angular Material Datepicker.
+Based on `MatCalendar`, the component under Angular Material Datepicker, this package will help you display and manage multiple inline calendars. Its main purpose is to be used as custom form control in reactive forms.
+
+**Features**
+- list multuple months;
+- multiple dates selection;
+- navigation to next/previous month;
 
 ![Inline calendars](./docs/inline-calendars.png)
 
