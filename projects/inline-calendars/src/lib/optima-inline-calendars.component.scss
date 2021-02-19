@@ -5,6 +5,7 @@
   width: 100%;
   flex: 1;
   align-items: center;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
