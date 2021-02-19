@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/optima-digital/optima-lib"
   },
-  "version": "0.0.6",
+  "version": "0.0.7",
   "peerDependencies": {
     "@angular/common": "^11.0.9",
     "@angular/core": "^11.0.9",
@@ -13,7 +13,15 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
-  "keywords": ["angular", "material", "calendar", "multiple", "inline", "mat-calendar", "mat-datepicker"],
+  "keywords": [
+    "angular",
+    "material",
+    "calendar",
+    "multiple",
+    "inline",
+    "mat-calendar",
+    "mat-datepicker"
+  ],
   "license": "MIT",
   "author": {
     "name": "Venelin Manchev",
