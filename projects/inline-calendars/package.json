@@ -6,12 +6,12 @@
   },
   "version": "0.1.0",
   "peerDependencies": {
-    "@angular/common": "~12.2.13",
-    "@angular/core": "~12.2.13",
+    "@angular/common": "~13.0.2",
+    "@angular/core": "~13.0.2",
     "moment": "^2.29.1"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.3.1"
   },
   "keywords": [
     "angular",

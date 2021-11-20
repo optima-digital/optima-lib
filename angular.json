@@ -30,18 +30,6 @@
             "tsConfig": "projects/inline-calendars/tsconfig.spec.json",
             "karmaConfig": "projects/inline-calendars/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/inline-calendars/tsconfig.lib.json",
-              "projects/inline-calendars/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }
