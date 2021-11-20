@@ -13,8 +13,9 @@ Based on `MatCalendar`, the component under Angular Material Datepicker, this pa
 
 | Angular | OptimaLib |
 | --- | --- |
-| 11.x | 0.0.7 |
+| 13.x | 13.x |
 | 12.x | 0.1.0 |
+| 11.x | 0.0.7 |
 
 ## Install
 

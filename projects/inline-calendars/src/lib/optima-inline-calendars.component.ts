@@ -105,11 +105,11 @@ export class OptimaInlineCalendarsComponent implements OnInit, ControlValueAcces
       this.value = [];
     }
 
-    if (moment.isDate(date)) {
+    if (this.isDate(date)) {
       date = moment(date);
     }
 
-    const formattedDate = date.format('YYYY-MM-DD');
+    const formattedDate = (date as Moment).format('YYYY-MM-DD');
     if (this.value.indexOf(formattedDate) !== -1) {
       return 'inline-calendar__date--selected';
     }
@@ -136,5 +136,9 @@ export class OptimaInlineCalendarsComponent implements OnInit, ControlValueAcces
     nextMonth.setMonth(nextMonth.getMonth() + (idx - middleIdx));
 
     return nextMonth;
+  }
+
+  private isDate(value: any): boolean {
+    return value instanceof Date && !isNaN(value.valueOf())
   }
 }
