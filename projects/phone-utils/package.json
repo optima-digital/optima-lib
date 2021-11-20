@@ -1,0 +1,29 @@
+{
+  "name": "@optima-lib/phone-utils",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/optima-digital/optima-lib"
+  },
+  "version": "13.0.0",
+  "peerDependencies": {
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0",
+    "@angular/forms": "^13.0.0"
+  },
+  "dependencies": {
+    "libphonenumber-js": "^1.9.43",
+    "tslib": "^2.3.0"
+  },
+  "keywords": [
+    "angular",
+    "phone",
+    "format",
+    "formatter",
+    "libphonenumber"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Venelin Manchev",
+    "email": "manchev@optima.vet"
+  }
+}

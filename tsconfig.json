@@ -19,6 +19,10 @@
       "inline-calendars": [
         "dist/inline-calendars/inline-calendars",
         "dist/inline-calendars"
+      ],
+      "phone-utils": [
+        "dist/phone-utils/phone-utils",
+        "dist/phone-utils"
       ]
     }
   }
