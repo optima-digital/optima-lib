@@ -65,5 +65,7 @@
       }
     }
   },
-  "defaultProject": "inline-calendars"
+  "cli": {
+    "analytics": false
+  }
 }

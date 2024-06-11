@@ -8,6 +8,7 @@ It uses [libphonenumber-js](https://gitlab.com/catamphetamine/libphonenumber-js)
 
 | Angular | OptimaLib |
 | --- | --- |
+| 14.x | 14.x |
 | 13.x | 13.x |
 
 ## Install

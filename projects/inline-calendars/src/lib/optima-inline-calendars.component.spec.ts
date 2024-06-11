@@ -8,9 +8,12 @@ describe('OptimaInlineCalendarsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OptimaInlineCalendarsComponent ]
+      declarations: [OptimaInlineCalendarsComponent],
     })
-    .compileComponents();
+      .overrideComponent(OptimaInlineCalendarsComponent, {
+        set: { template: '' },
+      })
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -7,7 +7,7 @@ import { OptimaPhoneUtilsService } from './optima-phone-utils.service';
 export class OptimaNationalFormatPipe implements PipeTransform {
   constructor(private optimaPhoneUtilsService: OptimaPhoneUtilsService) {}
 
-  transform(value: string, ...args: string[]): string {
-    return this.optimaPhoneUtilsService.getNational(value, args[0]);
+  transform(value: string, countryCode: string): string {
+    return this.optimaPhoneUtilsService.getNational(value, countryCode);
   }
 }
