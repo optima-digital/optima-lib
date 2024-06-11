@@ -4,10 +4,10 @@
     "type": "git",
     "url": "https://github.com/optima-digital/optima-lib"
   },
-  "version": "14.0.0",
+  "version": "15.0.0",
   "peerDependencies": {
-    "@angular/common": "^14.3.0",
-    "@angular/core": "^14.3.0",
+    "@angular/common": "^15.2.10",
+    "@angular/core": "^15.2.10",
     "moment": "^2.29.1"
   },
   "dependencies": {
