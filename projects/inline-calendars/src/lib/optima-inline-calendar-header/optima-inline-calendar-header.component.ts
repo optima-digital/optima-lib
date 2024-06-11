@@ -12,18 +12,25 @@ import {
   MatDateFormats,
   MAT_DATE_FORMATS,
 } from '@angular/material/core';
-import { MatCalendar } from '@angular/material/datepicker';
+import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { OptimaInlineCalendarsService } from '../optima-inline-calendars.service';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'optima-inline-calendar-header',
   templateUrl: './optima-inline-calendar-header.component.html',
   styleUrls: ['./optima-inline-calendar-header.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatButtonModule, MatDatepickerModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OptimaInlineCalendarHeaderComponent<D> implements OnInit, OnDestroy {
+export class OptimaInlineCalendarHeaderComponent<D>
+  implements OnInit, OnDestroy
+{
   public disabled = false;
   public dataset: { id: number; first: boolean; last: boolean };
   public nextArrowTop = false;

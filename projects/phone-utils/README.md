@@ -7,10 +7,12 @@ It uses [libphonenumber-js](https://gitlab.com/catamphetamine/libphonenumber-js)
 ## Versions grid
 
 | Angular | OptimaLib |
-| --- | --- |
-| 15.x | 15.x |
-| 14.x | 14.x |
-| 13.x | 13.x |
+| ------- | --------- |
+| 17.x    | 17.x      |
+| 16.x    | 16.x      |
+| 15.x    | 15.x      |
+| 14.x    | 14.x      |
+| 13.x    | 13.x      |
 
 ## Install
 
@@ -33,41 +35,41 @@ constructor(private phoneUtils: OptimaPhoneUtilsService) { }
 
 - **getInternational(value: string, country: string): string** - Transform a given phone number to international format
 
-  | Param | Description |
-  | --- | --- |
-  | value | Phone numer |
+  | Param   | Description              |
+  | ------- | ------------------------ |
+  | value   | Phone numer              |
   | country | Two-letters country code |
 
 - **getNational(value: string, country: string): string** - Transform a given phone number to its national format
 
-  | Param | Description |
-  | --- | --- |
-  | value | Phone numer |
+  | Param   | Description              |
+  | ------- | ------------------------ |
+  | value   | Phone numer              |
   | country | Two-letters country code |
 
 - **getPlain(value: string, country: string): string** - International format without inner spaces (PNF.E164)
 
-  | Param | Description |
-  | --- | --- |
-  | value | Phone numer |
+  | Param   | Description              |
+  | ------- | ------------------------ |
+  | value   | Phone numer              |
   | country | Two-letters country code |
 
 - **isValid(value: string, country: string): boolean** - General purpose validator. Use in conjunction with other services
   and components. The method will return true when arguments relates to a phone number from the selected country.
 
-  | Param | Description |
-  | --- | --- |
-  | value | Phone numer |
+  | Param   | Description              |
+  | ------- | ------------------------ |
+  | value   | Phone numer              |
   | country | Two-letters country code |
 
 - **isValidFormControl(country: string): boolean** - Reactive form validator. It will set **phoneInvalid** property
   in related form control error's object.
 
-  | Param | Description |
-  | --- | --- |
-  | country | Two-letters country code.|
-  
-   Usage:
+  | Param   | Description               |
+  | ------- | ------------------------- |
+  | country | Two-letters country code. |
+
+  Usage:
 
 ```
 // app.component.ts
@@ -90,19 +92,18 @@ public getForm() {
 
 ### Usage
 
-Import **OptimaPhoneUtilsModule** in the module where you want to use it:
+Import **OptimaInternationalFormatPipe** in the component where you want to use it:
 
 ```
-import { OptimaPhoneUtilsModule } from '@optima-lib/phone-utils';
+import { OptimaInternationalFormatPipe } from '@optima-lib/phone-utils';
 
-
-@NgModule({
+@Component({
   imports: [
     ...,
-    OptimaPhoneUtilsModule
+    OptimaInternationalFormatPipe
   ]
 })
-export class UserModule() { }
+export class UserComponent() { }
 ```
 
 And then it can be used as:
@@ -121,19 +122,18 @@ which will produce:
 
 ### Usage
 
-Import **OptimaPhoneUtilsModule** in the module where you want to use it:
+Import **OptimaNationalFormatPipe** in the component where you want to use it:
 
 ```
-import { OptimaPhoneUtilsModule } from '@optima-lib/phone-utils';
+import { OptimaNationalFormatPipe } from '@optima-lib/phone-utils';
 
-
-@NgModule({
+@Component({
   imports: [
     ...,
-    OptimaPhoneUtilsModule
+    OptimaNationalFormatPipe
   ]
 })
-export class UserModule() { }
+export class UserComponent() { }
 ```
 
 And then it can be used as:

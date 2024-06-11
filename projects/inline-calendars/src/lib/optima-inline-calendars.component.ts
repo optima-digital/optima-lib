@@ -7,7 +7,8 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatCalendar } from '@angular/material/datepicker';
+import { CommonModule } from '@angular/common';
+import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
 import * as moment_ from 'moment';
 import { Moment } from 'moment';
 import { OptimaInlineCalendarHeaderComponent } from './optima-inline-calendar-header/optima-inline-calendar-header.component';
@@ -19,6 +20,8 @@ const moment = moment_;
   selector: 'optima-inline-calendars',
   templateUrl: './optima-inline-calendars.component.html',
   styleUrls: ['./optima-inline-calendars.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatDatepickerModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -27,7 +30,9 @@ const moment = moment_;
     },
   ],
 })
-export class OptimaInlineCalendarsComponent implements OnInit, ControlValueAccessor {
+export class OptimaInlineCalendarsComponent
+  implements OnInit, ControlValueAccessor
+{
   @Input() public startAt: Date | null;
   @Input() public totalCalendars = 3;
   @ViewChildren(MatCalendar) calendars: QueryList<MatCalendar<Moment>>;
@@ -115,7 +120,7 @@ export class OptimaInlineCalendarsComponent implements OnInit, ControlValueAcces
     }
 
     return null;
-  }
+  };
 
   private setupCalendars(): void {
     this.calendarInstances = [];
@@ -139,6 +144,6 @@ export class OptimaInlineCalendarsComponent implements OnInit, ControlValueAcces
   }
 
   private isDate(value: any): boolean {
-    return value instanceof Date && !isNaN(value.valueOf())
+    return value instanceof Date && !isNaN(value.valueOf());
   }
 }

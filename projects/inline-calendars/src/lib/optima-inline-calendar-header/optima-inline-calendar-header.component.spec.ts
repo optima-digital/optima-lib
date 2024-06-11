@@ -15,8 +15,11 @@ describe('OptimaInlineCalendarHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OptimaInlineCalendarHeaderComponent],
-      imports: [MatDatepickerModule, MatNativeDateModule],
+      imports: [
+        OptimaInlineCalendarHeaderComponent,
+        MatDatepickerModule,
+        MatNativeDateModule,
+      ],
       providers: [{ provide: MatCalendar, useValue: MockMatCalendar }],
     })
       .overrideComponent(OptimaInlineCalendarHeaderComponent, {

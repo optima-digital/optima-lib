@@ -1,5 +1,12 @@
-<div *ngIf="calendarInstances.length > 0" class="inline-calendars mat-elevation-z2">
-  <mat-calendar *ngFor="let calendarInstance of calendarInstances; let first = first; let last = last; let index = index;"
+@if(calendarInstances.length > 0) {
+<div class="inline-calendars mat-elevation-z2">
+  <mat-calendar
+    *ngFor="
+      let calendarInstance of calendarInstances;
+      let first = first;
+      let last = last;
+      let index = index
+    "
     [headerComponent]="customHeader"
     #calendar
     [id]="calendarInstance.id"
@@ -10,5 +17,6 @@
     [startAt]="calendarInstance.startAt"
     [dateClass]="highlightSelectedDates"
     (selectedChange)="onSelect($event)"
-    ></mat-calendar>
+  ></mat-calendar>
 </div>
+}

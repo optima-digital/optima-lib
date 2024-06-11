@@ -4,11 +4,11 @@
     "type": "git",
     "url": "https://github.com/optima-digital/optima-lib"
   },
-  "version": "16.0.0",
+  "version": "17.0.0",
   "peerDependencies": {
-    "@angular/common": "^16.2.12",
-    "@angular/core": "^16.2.12",
-    "@angular/forms": "^16.2.12"
+    "@angular/common": "^17.3.11",
+    "@angular/core": "^17.3.11",
+    "@angular/forms": "^17.3.11"
   },
   "dependencies": {
     "libphonenumber-js": "^1.9.43",

@@ -1,22 +1,24 @@
 <div class="inline-calendar__header">
+  @if(dataset.first) {
   <button
     type="button"
     mat-icon-button
     (click)="previousClicked('month')"
-    *ngIf="dataset.first"
     [disabled]="disabled"
   >
     <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
+  }
   <span class="inline-calendar__label">{{ periodLabel }}</span>
+  @if(dataset.last) {
   <button
     type="button"
     mat-icon-button
     (click)="nextClicked('month')"
-    *ngIf="dataset.last"
     [disabled]="disabled"
-    [ngClass]="{'inline-calendar__next--top': nextArrowTop}"
+    [ngClass]="{ 'inline-calendar__next--top': nextArrowTop }"
   >
     <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
+  }
 </div>

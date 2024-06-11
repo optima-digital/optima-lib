@@ -3,6 +3,7 @@ import { OptimaPhoneUtilsService } from './optima-phone-utils.service';
 
 @Pipe({
   name: 'nationalFormat',
+  standalone: true,
 })
 export class OptimaNationalFormatPipe implements PipeTransform {
   constructor(private optimaPhoneUtilsService: OptimaPhoneUtilsService) {}

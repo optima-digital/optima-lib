@@ -8,7 +8,7 @@ describe('OptimaInlineCalendarsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OptimaInlineCalendarsComponent],
+      imports: [OptimaInlineCalendarsComponent],
     })
       .overrideComponent(OptimaInlineCalendarsComponent, {
         set: { template: '' },

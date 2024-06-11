@@ -13,6 +13,8 @@ Based on `MatCalendar`, the component under Angular Material Datepicker, this pa
 
 | Angular | OptimaLib |
 | --- | --- |
+| 17.x | 17.x |
+| 16.x | 16.x |
 | 15.x | 15.x |
 | 14.x | 14.x |
 | 13.x | 13.x |
@@ -27,9 +29,17 @@ npm install @optima-lib/inline-calendars
 
 ## Usage
 
-Import the module to your `app.module.ts`
+Import **OptimaInlineCalendarsComponent** in the component where you want to use it:
 ```
-import { OptimaInlineCalendarsModule } from '@optima-lib/inline-calendars';
+import { OptimaInlineCalendarsComponent } from '@optima-lib/inline-calendars';
+
+@Component({
+  imports: [
+    ...,
+    OptimaInlineCalendarsComponent
+  ]
+})
+export class UserComponent() { }
 ```
 
 Add the inline calendar components to your view:
